@@ -37,10 +37,10 @@ public enum LogTimeLevel {
 		LogTimeLevel item = null;
 
 		if (null != name && !name.isEmpty()) {
-			String queryName = name.toLowerCase(Locale.ENGLISH);
+			String queryName = name.toUpperCase(Locale.ENGLISH);
 			
 			for (LogTimeLevel enumItem : LogTimeLevel.values()) {
-				if (enumItem.getName().equalsIgnoreCase(queryName)) {
+				if (enumItem.getName().equals(queryName)) {
 					item = enumItem;
 					break;
 				}
