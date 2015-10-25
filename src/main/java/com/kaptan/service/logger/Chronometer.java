@@ -34,6 +34,7 @@ public class Chronometer {
 	public void start() {
 		start = System.currentTimeMillis();
 		stepStart = start;
+		clearMapAndLock();
 
 	}
 
@@ -64,7 +65,7 @@ public class Chronometer {
 		sb.append(elapsedTime());
 
 		// Clear Results
-		clearMap();
+		clearMapAndLock();
 
 		return sb.toString();
 	}
@@ -80,7 +81,8 @@ public class Chronometer {
 		this.lockTimeLevelChange = true;
 	}
 
-	private void clearMap() {
+	private void clearMapAndLock() {
 		this.stepTimerMap.clear();
+		this.lockTimeLevelChange =false;
 	}
 }
