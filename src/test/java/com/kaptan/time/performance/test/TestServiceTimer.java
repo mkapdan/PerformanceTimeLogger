@@ -32,7 +32,7 @@ public class TestServiceTimer {
 			PerformanceTimeLogger.getChronometer().stepElapsedTime("Tester");
 
 			System.out.println("***************** Print Step Time Logs ******************");
-			System.out.println(PerformanceTimeLogger.getChronometer().getLinearizedLogs());
+			System.out.println(PerformanceTimeLogger.getChronometer().stopAndGetLogs());
 
 			System.out.println("***************** Timer Logger Final Time ******************");
 			System.out.println(

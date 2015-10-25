@@ -18,7 +18,7 @@ public class MainClass {
 		Thread.sleep(4000);
 	
 
-		System.out.println(PerformanceTimeLogger.getChronometer().getLinearizedLogs());
+		System.out.println(PerformanceTimeLogger.getChronometer().stopAndGetLogs());
 	}
 
 	public static void main(String[] args) {

@@ -47,7 +47,7 @@ public class Chronometer {
 		return stepElapsedTime;
 	}
 
-	public String getLinearizedLogs() {
+	public String stopAndGetLogs() {
 		StringBuilder sb = new StringBuilder();
 
 		sb.append(TimerFormatterConstans.LOG_DATETIME);
