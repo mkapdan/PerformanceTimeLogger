@@ -9,9 +9,12 @@ public class MainClass {
 		PerformanceTimeLogger.getChronometer().start();
 		System.out.println("You are here : " + this.getClass().getSimpleName());
 
+		Thread.sleep(2000);
+		
 		SubClassOne subone = new SubClassOne();
 		subone.doSomeSubthing();
 
+			
 		SubClassTwo subtwo = new SubClassTwo();
 		subtwo.doSomeSubliminalThings();
 

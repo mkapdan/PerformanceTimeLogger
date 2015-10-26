@@ -38,6 +38,10 @@ public class Chronometer {
 
 	}
 
+	public void startStep() {
+		stepStart = System.currentTimeMillis();
+	}
+
 	public long stepElapsedTime(String stepName) {
 		lockTimeLevel();
 		long endStep = System.currentTimeMillis();
@@ -48,6 +52,8 @@ public class Chronometer {
 	}
 
 	public String stopAndGetLogs() {
+
+		long total_time = elapsedTime();
 		StringBuilder sb = new StringBuilder();
 
 		sb.append(TimerFormatterConstans.LOG_DATETIME);
@@ -62,7 +68,7 @@ public class Chronometer {
 		}
 		sb.append(TimerFormatterConstans.TOTAL_TIME);
 		sb.append(TimerFormatterConstans.EQUAL_DELIMETER);
-		sb.append(elapsedTime());
+		sb.append(total_time);
 
 		// Clear Results
 		clearMapAndLock();
@@ -83,6 +89,6 @@ public class Chronometer {
 
 	private void clearMapAndLock() {
 		this.stepTimerMap.clear();
-		this.lockTimeLevelChange =false;
+		this.lockTimeLevelChange = false;
 	}
 }

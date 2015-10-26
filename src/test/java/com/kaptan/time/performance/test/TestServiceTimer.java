@@ -19,15 +19,19 @@ public class TestServiceTimer {
 			sleepMyThread(sleepTime);
 			PerformanceTimeLogger.getChronometer().stepElapsedTime("Mustafa");
 
-			sleepTime = 2000;
+			sleepTime = 1000;
 			sleepMyThread(sleepTime);
 			PerformanceTimeLogger.getChronometer().stepElapsedTime("Kaptan");
 
-			sleepTime = 3000;
+			sleepTime = 10000;
+			sleepMyThread(sleepTime);
+
+			PerformanceTimeLogger.getChronometer().startStep();
+			sleepTime = 1000;
 			sleepMyThread(sleepTime);
 			PerformanceTimeLogger.getChronometer().stepElapsedTime("Performance");
 
-			sleepTime = 5000;
+			sleepTime = 1000;
 			sleepMyThread(sleepTime);
 			PerformanceTimeLogger.getChronometer().stepElapsedTime("Tester");
 
@@ -39,8 +43,7 @@ public class TestServiceTimer {
 					TimerFormatterConstans.TOTAL_TIME + " : " + PerformanceTimeLogger.getChronometer().elapsedTime());
 
 			System.out.println("***************** Timer Logger Ends ******************");
-			
-			
+
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
