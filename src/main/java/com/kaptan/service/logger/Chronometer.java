@@ -40,6 +40,9 @@ public class Chronometer {
 
 	public void startStep() {
 		stepStart = System.currentTimeMillis();
+		if (start < 1) {
+			start = stepStart;
+		}
 	}
 
 	public long stepElapsedTime(String stepName) {
