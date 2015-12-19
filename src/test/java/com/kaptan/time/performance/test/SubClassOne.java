@@ -9,6 +9,9 @@ public class SubClassOne {
 		PerformanceTimeLogger.getChronometer().startStep();
 		System.out.println("You are here : " + this.getClass().getSimpleName());
 		Thread.sleep(1000);
+		SubClassTwo subtwo = new SubClassTwo();
+		subtwo.doSomeSubliminalThings();
+		Thread.sleep(4000);
 		PerformanceTimeLogger.getChronometer().stepElapsedTime(SubClassOne.class.getSimpleName());
 	}
 }

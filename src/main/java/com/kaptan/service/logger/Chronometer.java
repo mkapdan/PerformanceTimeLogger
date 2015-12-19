@@ -3,6 +3,7 @@ package com.kaptan.service.logger;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Stack;
 
 public class Chronometer {
 
@@ -18,39 +19,41 @@ public class Chronometer {
 
 	private boolean lockTimeLevelChange = false;
 
+	private Stack<Long> startTimeStack;
+
 	public Chronometer() {
 		stepTimerMap = new LinkedHashMap<String, Long>();
+		startTimeStack = new Stack<Long>();
 		DEFAULT_LEVEL = LogTimeLevel.MILISECONDS;
 
 	}
 
-	public long elapsedTime() {
+	private long elapsedTime() {
 		lockTimeLevel();
 		end = System.currentTimeMillis();
+		if (!startTimeStack.isEmpty())
+			start = startTimeStack.pop();
 		long totalTime = (end - start) / DEFAULT_LEVEL.getValue();
 		return totalTime;
 	}
 
 	public void start() {
 		start = System.currentTimeMillis();
-		stepStart = start;
+		startTimeStack.push(start);
 		clearMapAndLock();
 
 	}
 
 	public void startStep() {
 		stepStart = System.currentTimeMillis();
-		if (start < 1) {
-			start = stepStart;
-		}
+		startTimeStack.push(stepStart);
 	}
 
 	public long stepElapsedTime(String stepName) {
 		lockTimeLevel();
 		long endStep = System.currentTimeMillis();
-		long stepElapsedTime = (endStep - stepStart) / DEFAULT_LEVEL.getValue();
+		long stepElapsedTime = (endStep - startTimeStack.pop()) / DEFAULT_LEVEL.getValue();
 		stepTimerMap.put(stepName, stepElapsedTime);
-		stepStart = endStep;
 		return stepElapsedTime;
 	}
 

@@ -10,16 +10,9 @@ public class MainClass {
 		System.out.println("You are here : " + this.getClass().getSimpleName());
 
 		Thread.sleep(2000);
-		
+
 		SubClassOne subone = new SubClassOne();
 		subone.doSomeSubthing();
-
-			
-		SubClassTwo subtwo = new SubClassTwo();
-		subtwo.doSomeSubliminalThings();
-
-		Thread.sleep(4000);
-	
 
 		System.out.println(PerformanceTimeLogger.getChronometer().stopAndGetLogs());
 	}
